@@ -8,7 +8,7 @@ class IterHousehold(type):
 
 
 class Household(metaclass=IterHousehold):
-    _allHouseholds = []
+    _allHouseholds = list()
 
     def __init__(self, name):
         self._allHouseholds.append(self)
@@ -20,9 +20,13 @@ class Household(metaclass=IterHousehold):
 
     def pay(self, value):
         self.expenditure += value
+        Household._allHouseholds += value
 
     def define_size(self, n):
         self.size = n
+
+    def get_total_families(self):
+        pass
 
     def __repr__(self):
         return f'Family {self.name} has {self.size} people and paid {self.expenditure}'
